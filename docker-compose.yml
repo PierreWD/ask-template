@@ -1,0 +1,47 @@
+#version: '3.4'
+#services:
+#  nginx:
+#    image: nginx:mainline-alpine
+#    ports:
+#      - '8080:80'
+#    restart: on-failure
+
+#  mariadb:
+#    image: mariadb
+#    environment:
+#      MYSQL_ROOT_PASSWORD: example
+#      MYSQL_DATABASE: mydb
+#      MYSQL_USER: username
+#      MYSQL_PASSWORD: password
+#    ports: 
+#      - "3630:3630" 
+#    restart: on-failure
+#    volumes:
+#     - ./volumeDB_back
+
+
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./back
+      target: runner
+    volumes:
+      - ./back/:/app
+    environment:
+      - NODE_ENV=production
+      - BDD_URL=mariadb://ask:ask@database/database
+      - PORT=3630
+    command: ['npm', 'run', 'dev']
+
+  database:
+    image: mariadb:10.6
+    ports:
+      - 3631:3306
+    environment:
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=ask
+      - MYSQL_PASSWORD=ask
+      - MYSQL_ROOT_PASSWORD=ask
+    
