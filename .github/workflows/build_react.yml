@@ -24,7 +24,7 @@ jobs:
           node-version: 14
       - run: npm install -g
       - name: Build project
-        run: npm run build
+        run: npm start build
 
   
   deploy:
