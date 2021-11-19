@@ -20,13 +20,13 @@ export default function Answer() {
     api.questions.getOne(id)
   );
   const { mutate: addAnswer } = useMutation(api.questions.answer, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       history.push("/");
     },
   });
 
   function handleAnswer() {
-    if (!!answer) {
+    if (!answer) {
       addAnswer({ id: id, body: { answer } });
     }
   }
