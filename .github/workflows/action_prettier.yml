@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 14
-    - run: npm install --only=dev
+    - run: npm install -g
     - run: npm run lint
     - run: npm run check-pretty
   
@@ -40,5 +40,5 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 14
-    - run: npm install --only=dev
+    - run: npm install -g
     - run: npm run check-pretty
