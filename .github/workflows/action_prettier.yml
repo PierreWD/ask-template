@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: 14
     - run: npm install -g
+    - run: npm install -g eslint 
     - run: npm run lint
     - run: npm run check-pretty
   
