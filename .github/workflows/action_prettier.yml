@@ -42,4 +42,4 @@ jobs:
       with:
         node-version: 14
     - run: npm install -g
-    - run: npm run check-pretty
+    #- run: npm run check-pretty
