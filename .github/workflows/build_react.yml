@@ -28,6 +28,8 @@ jobs:
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
     - name: Setup Perm
       run: chmod 600 ~/.ssh/id_rsa
+    - name: testIPV6
+      run: ping6 cdad87.iutrs.unistra.fr
     - name: Adding Known Hosts
       run: ssh-keyscan -H -p 80 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
     - name: Deploy with rsync
